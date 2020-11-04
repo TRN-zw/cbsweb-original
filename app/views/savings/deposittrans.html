@@ -1,0 +1,74 @@
+<div class="panel" ng-controller="SavingsController">
+    <div class="card">
+        <div class="toolbar">
+            <h4>Loan Accounts</h4>
+        </div>
+        <div class="content">
+            <br>
+            <div class="row">
+                <div class="col-sm-8">
+                    <form ng-submit="search()" class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <input ng-autofocus="true" ng-model="filterText" ng-keyup="onFilter()" type="text"
+                                       class="form-control unstyled"
+                                       placeholder="{{'label.input.filterbynameaccno' | translate}}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="input-group">
+                                    <input data-ng-model="searchText" type="text"
+                                           placeholder="{{'label.input.searchByNameAccNo' | translate}}"
+                                           class="form-control unstyled"/>
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary form-control">
+                                            <span class="fa fa-search"></span>
+                                        </button>
+                                    </span>
+                                    <div class="checkbox form-control">
+                                            <label for="showAll">
+                                                <input type="checkbox" id="showAll" name="showAll" ng-model="showClosed">
+                                                {{'label.button.showall' | translate }}
+                                            </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-4">
+                    <a href="#/createclient" class="btn btn-primary pull-right" has-permission='CREATE_CLIENT'><i
+                            class="fa fa-plus"></i> {{'label.button.createclient' | translate}}</a> &nbsp;&nbsp;
+                    <a href="#/bulkimportclients" class="btn btn-primary pull-right" has-permission='CREATE_CLIENT'><i
+ +                            class="fa fa-upload"></i>&nbsp;{{'label.button.importclients' | translate}}</a>
+                </div>
+            </div>
+            <hr/>
+
+            <table class="table">
+                <thead>
+                <tr class="graybg">
+                    <th>{{'label.heading.name' | translate}}</th>
+                    <th> {{'label.heading.accnum' | translate}}</th>
+                    <th> {{'label.heading.externalid' | translate}}</th>
+                    <th>{{'label.heading.status' | translate}}</th>
+                    <th>{{'label.heading.office' | translate}}</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr dir-paginate="loan in loans | orderBy:'displayName':reverse  | filter:filterText | itemsPerPage: clientsPerPage" class="pointer-main"
+                     total-items="totalLoans"  pagination-id="loans">
+                    <td class="pointer" >{{loan.clientName}}</td>
+                    <td class="pointer" >{{loan.accountNo}}</td>
+                    <td class="pointer" >{{loan.savingsProductName}}</td>
+                    <td class="pointer" >
+                        <i class="fa fa-stop {{loan.status.code | StatusLookup}}" uib-tooltip="{{center.status.value}}" uib-tooltip-placement="top">
+                        </i>
+                    </td>
+                    <td class="pointer" >{{loan.accountBalance}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,222 @@
+<div class="panel" ng-controller="LoanController">
+
+  <script type="text/ng-template" id="uploadpic.html">
+    <div class="modal-header silver">
+      <h3 class="bolder">{{'label.heading.selectclientimage' | translate}}</h3>
+    </div>
+    <div class="modal-body">
+      <api-validate></api-validate>
+      <br>
+      <input type="file" ngf-select ng-model="file">
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-warning" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+      <button class="btn btn-primary" ng-click="upload(file)">{{'label.button.upload' | translate}}</button>
+    </div>
+  </script>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+    <div class="card">
+      <div class="toolbar">
+          <h4>Loan Accounts</h4>
+      </div>
+      <div class="content">
+          <br>
+<!-- <div excel export-data="exportData" file-name="{{fileName}}"></div> -->
+          <div class="row">
+              <div class="col-sm-12">
+                  <form ng-submit="search()" class="form-horizontal">
+                      <div class="form-group">
+
+                          <div class="col-md-8">
+                                        <label for="showAll" class="checkbox-inline">
+                                            <b>Filter By: </b>
+                                        </label>
+                                        <label for="showPending" class="checkbox-inline">
+                                            <input type="checkbox" id="showPending" name="showPending" ng-model="showPending_">
+                                            Pending Approval
+                                        </label>
+                                        <label for="showDis" class="checkbox-inline">
+                                            <input type="checkbox" id="showDis" name="showDis" ng-model="showDis_">
+                                            Approved
+                                        </label>
+                                        <label for="showActive" class="checkbox-inline">
+                                            <input type="checkbox" id="showActive" name="showActive" ng-model="showActive_">
+                                            Active
+                                        </label>
+                                        <label for="showArrears" class="checkbox-inline">
+                                            <input type="checkbox" id="showArrears" name="showArrears" ng-model="showArrears_">
+                                            In Arrears
+                                        </label>
+                                        <label for="showAll" class="checkbox-inline">
+                                            <input type="checkbox" id="showAll" name="showAll" ng-model="showClosed">
+                                            Closed
+                                        </label>
+                                        <button type="button" class="btn btn-primary" data-ng-click="uploadPic()" has-permission='CREATE_CLIENTIMAGE'
+                                            uib-tooltip="{{'label.button.uploadpic' | translate}}">
+                                          <i class="fa fa-upload"></i>
+                                        </button>
+                      </div>
+                      <div class="col-md-4">
+                        <!-- <div class="input-group pull-right" >
+                          <input ng-autofocus="true" ng-model="filterText" ng-keyup="onFilter()" type="text"
+                                 class="form-control unstyled"
+                                 placeholder="Search Loans">
+                                 <span class="input-group-btn">
+                                     <button class="btn btn-primary form-control">
+                                         <span class="fa fa-search"></span>
+                                     </button>
+                                 </span>
+                            </div> -->
+                      </div>
+                  </form>
+
+              </div>
+              </div>
+          </div>
+
+          <hr/>
+
+            <table class="table table-striped table-bordered" datatable="ng" dt-options="vm.dtOptions" dt-instance="vm.dtInstance"  width="100%" dt-column-defs="vm.dtColumnDefs">
+              <!-- dt-column-defs="vm.dtColumnDefs"> -->
+             <!-- <tfoot>
+              <tr>
+                  <th>ID
+                  </th><th>First Name
+                  </th><th>Last Name
+              </th></tr>
+              </tfoot> -->
+                <thead>
+                <tr class="graybg">
+                    <th>Name</th>
+                    <th>Account No.</th>
+                    <th>Product</th>
+                    <th>Account State</th>
+                    <th>Loan Amount</th>
+                    <th>Tenure</th>
+                    <th>Total Due</th>
+                    <th>Total Paid</th>
+                    <th>Balance</th>
+                    <!-- Optional Columns -->
+                    <th>Loan Type</th>
+                    <th>Currency</th>
+                    <th>Period</th>
+                    <th>Interest</th>
+                    <th>Calculation</th>
+                    <th>Submitted</th>
+                    <th>Approved</th>
+                    <th>Disbursed</th>
+                    <th>Maturity</th>
+
+                    <th>Submitted By</th>
+                    <th>Approved By</th>
+                    <th>Disbursed By</th>
+                    <th>OverDue Since</th>
+                    <th>Interest Expected</th>
+                    <th>Interest Paid</th>
+                    <th>Principal Paid</th>
+                    <th>Principal Due</th>
+                    <th>Principal Balance</th>
+
+                    <th>Interest Paid</th>
+                    <th>Interest Due</th>
+
+                    <th>Fees Charged</th>
+                    <th>Fees Paid</th>
+                    <th>Fees Due</th>
+
+                    <th>Penalty Charged</th>
+                    <th>Penalty Paid</th>
+                    <th>Penalty Due</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="loan in filterData = (loans | LoanStatus : showPending_:showDis_:showActive_:showArrears_:showClosed:filterText) | orderBy:'displayName':reverse  |  LoanStatus : showPending_:showDis_:showActive_:showArrears_:showClosed:filterText " class="pointer-main">
+                       <!-- ng-show="!loan.status.closed || showClosed"> -->
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.clientName }} {{loan.group.name}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)" >{{loan.accountNo}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.loanProductName}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">
+                        <i ng-hide="loan.inArrears" class="fa fa-stop {{loan.status.code | StatusLookup}}" uib-tooltip="{{loan.status.value}}" uib-tooltip-placement="top">  </i>
+                        <i ng-show="loan.inArrears" class="fa fa-stop {{loan.status.code | StatusLookup}}overdue"> </i>
+                         <span ng-hide="loan.inArrears">{{loan.status.value}}</span>
+                         <span ng-show="loan.inArrears">In Arrears</span>
+                    </td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.principal | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.numberOfRepayments}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.totalOverdue | currency }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.totalRepayment | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.totalOutstanding | currency}}</td>
+                    <!-- Optional Columns -->
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.loanType.value }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.currency.code}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{ loan.repaymentEvery }} {{ loan.termPeriodFrequencyType.value }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.interestRatePerPeriod}} {{loan.interestRateFrequencyType.value}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.interestType.value }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.submittedOnDate | DateFormat}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.approvedOnDate | DateFormat}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.actualDisbursementDate | DateFormat}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.expectedMaturityDate | DateFormat}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.submittedByFirstname}} {{loan.timeline.submittedByLastname}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.approvedByFirstname}} {{loan.timeline.approvedByLastname}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.timeline.disbursedByFirstname}} {{loan.timeline.disbursedByLastname}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.overdueSinceDate | DateFormat }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.totalExpectedCostOfLoan | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.totalCostOfLoan | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.principalPaid | currency }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.principalOverdue | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.principalOutstanding | currency}}</td>
+
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.interestPaid | currency }}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.interestOverdue | currency}}</td>
+
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.feeChargesCharged | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.feeChargesPaid | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.feeChargesOverdue | currency}}</td>
+
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.penaltyChargesCharged | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.penaltyChargesPaid | currency}}</td>
+                    <td class="pointer" data-ng-click="routeToLoan(loan.id)">{{loan.summary.penaltyChargesOverdue | currency}}</td>
+                </tr>
+                </tbody>
+
+
+            </table>
+
+            <!-- <dir-pagination-controls
+    max-size="5"
+    direction-links="true"
+    boundary-links="true" >
+</dir-pagination-controls> -->
+
+            <!-- <dir-pagination-controls align="center" boundary-links="true"
+                                      template-url="bower_components/angular-utils-pagination/dirPagination.tpl.html"
+                                      on-page-change="getResultsPage(newPageNumber)" pagination-id="loans">
+                                      </dir-pagination-controls> -->
+
+        </div>
+    <!-- </div> -->
+
+
+</div>

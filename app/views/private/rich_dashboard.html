@@ -1,0 +1,358 @@
+<!-- <!-- <div class="container"> -->
+	<div id="expertsearch" class="card well" data-ng-controller="RichDashboard">
+		<!-- <div class="toolbar">
+				<h4>Dashboard</h4>
+		</div> -->
+
+		<div id="home"  class="container-fluid">
+			<!-- Info boxes -->
+<!-- <div class="box-footer"> -->
+	<!-- <div class="row bg-danger disabled">
+		<div class="col-sm-2 col-xs-6">
+			<div class="description-block border-right">
+				<span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
+				<h5 class="description-header">$35,210.43</h5>
+				<span class="description-text">TOTAL REVENUE</span>
+			</div> -->
+			<!-- /.description-block -->
+		<!-- </div> -->
+		<!-- /.col -->
+		<!-- <div class="col-sm-2 col-xs-6">
+			<div class="description-block border-right">
+				<span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
+				<h5 class="description-header">$10,390.90</h5>
+				<span class="description-text">TOTAL COST</span>
+			</div> -->
+			<!-- /.description-block -->
+		<!-- </div> -->
+		<!-- /.col -->
+		<!-- <div class="col-sm-2 col-xs-6">
+			<div class="description-block border-right">
+				<span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
+				<h5 class="description-header">$24,813.53</h5>
+				<span class="description-text">TOTAL PROFIT</span>
+			</div> -->
+			<!-- /.description-block -->
+		<!-- </div> -->
+		<!-- /.col -->
+		<!-- <div class="col-sm-2 col-xs-6">
+			<div class="description-block">
+				<span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
+				<h5 class="description-header">1200</h5>
+				<span class="description-text">GOAL COMPLETIONS</span>
+			</div> -->
+			<!-- /.description-block -->
+		<!-- </div>
+		<div class="col-sm-2 col-xs-6">
+			<div class="description-block border-right">
+				<span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
+				<h5 class="description-header">$24,813.53</h5>
+				<span class="description-text">TOTAL PROFIT</span>
+			</div> -->
+			<!-- /.description-block -->
+		<!-- </div> -->
+		<!-- /.col -->
+		<!-- <div class="col-sm-2 col-xs-6">
+			<div class="description-block">
+				<span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
+				<h5 class="description-header">1200</h5>
+				<span class="description-text">GOAL COMPLETIONS</span>
+			</div> -->
+			<!-- /.description-block -->
+		<!-- </div>
+	</div> -->
+	<!-- /.row -->
+<!-- </div> -->
+<!-- /.box-footer -->
+<!-- /.row -->
+				<div class="box box-solid ">
+						<div class="box-body ">
+								<!-- <hr> -->
+							<div class="row">
+								<div class="col-md-12">
+									<!-- <div class="box-header"> -->
+									<span class="info-box-number">	Portfolio Perfomance </span>
+									<!-- </div> -->
+										<div class="row" style="text-align:center;">
+												<div class="col-sm-12 col-md-2">
+														<a href="#/clients" class="thumbnail">
+															 <div class="caption">
+																 <span class="info-box-number">{{totalClients + totalGroups| number: '0.'}}</span>
+															 <span class="info-box-text">Clients</span>
+															 </div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/groups" class="thumbnail">
+															<div class="caption">
+																				<span class="info-box-number">{{totalGroups| number: '0.'}}</span>
+																				 <span class="info-box-text">Groups</span>
+																</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/loans" class="thumbnail">
+															 <div class="caption">
+																				<span class="info-box-number">{{grossLoanBook| currency}}</span>
+																				 <span class="info-box-text">Gross Loan Book</span>
+																</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/loans" class="thumbnail">
+															<div class="caption">
+																				<span class="info-box-number">{{par| number: '2.'}}%</span>
+																				 <span class="info-box-text">Portfolio at Risk</span>
+																		</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/loans" class="thumbnail">
+															<div class="caption">
+																				<span class="info-box-number">{{var| currency}}</span>
+																				 <span class="info-box-text">Value at Risk</span>
+																</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/loans" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">{{inArrearsCount| number: '0.'}}</span>
+																			 <span class="info-box-text">In Arrears</span>
+																</div>
+														</a>
+												</div>
+
+										</div>
+										<!-- <div class="box-header"> -->
+									  <!-- <i class="fa fa-bar-chart"></i> -->
+										<span class="info-box-number">	Portfolio Pipeline </span>
+										<!-- </div> -->
+										<div class="row" style="text-align:center;">
+												<div class="col-sm-12 col-md-2">
+														<a href="#/loans" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">{{submitted| currency}}</span>
+																			<span class="info-box-text">Pending Approval</span>
+															</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/loans" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">{{pending| currency}}</span>
+																			<span class="info-box-text">Pending Disbursement</span>
+															</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/transactions" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">{{disbursements| currency}}</span>
+																			<span class="info-box-text">Disbursements (Today)</span>
+															</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/collections" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">{{collected | currency}}/{{pendingCollection | currency}}</span>
+																			<span class="info-box-text">Collections (Expected/Actual)</span>
+
+														</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/transactions" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">{{disbursementsMonth| currency}}</span>
+																			<span class="info-box-text">Disbursements (Month)</span>
+															</div>
+														</a>
+												</div>
+												<div class="col-sm-12 col-md-2">
+														<a href="#/transactions" class="thumbnail">
+															<div class="caption">
+																			<span class="info-box-number">$0.00/$0.00</span>
+																			<span class="info-box-text">Month Collection (Expected/Actual)</span>
+															</div>
+														</a>
+												</div>
+										</div>
+								</div>
+
+							</div>
+
+							<div class="row">
+<div class="col-sm-6 col-md-6">
+	<div class="panel panel-default">
+			<div class="panel-heading">
+								<div class="row paddedbottom10">
+										<div class="col-sm-12 col-md-12">
+												<h3 class="panel-title">{{'label.heading.clienttrendsfor' | translate}} {{bOfficeName}} ({{chartType}})</h3>
+										</div>
+								</div>
+								<div class="row">
+										<div class="col-sm-12 col-md-12">
+												<select class="form-control input-small-tooltip" name="office1" ng-change="getDailyData()"
+														id="office1" ng-model="officeId"
+														data-ng-options="office.id as office.name for office in offices" value="{{office.id}}">
+														<option disabled value="">--{{'label.menu.office' | translate}}--</option>
+												</select>
+										</div>
+								</div>
+						</div>
+		<div class="panel-body">
+			<div>
+							 <button type="button" class="btn btn-default" data-ng-click="getWeeklyData()"><i
+											 class="fa fa-table"></i>&nbsp;{{'label.button.week' | translate}}
+							 </button>
+							 <button type="button" class="btn btn-default" data-ng-click="getMonthlyData()"><i
+											 class="fa fa-table"></i>&nbsp;{{'label.button.month' | translate}}
+							 </button>
+							 <button type="button" class="btn btn-default" data-ng-click="getDailyData()"><i
+											 class="fa fa-table"></i>&nbsp;{{'label.button.day' | translate}}
+							 </button>
+					</div>
+			<div style="height:300px;">
+							<nvd3-multi-bar-chart
+											 data="BarData"
+											 id="barchart"
+											 width="800"
+											 height="380"
+											 showXAxis="true"
+														 showYAxis="true"
+											 interactive="true"
+											 tooltips="true"
+											 color="colorFunction()"
+											 showLegend="true">
+									 <svg></svg>
+							 </nvd3-multi-bar-chart>
+					</div>
+		</div>
+		</div>
+</div>
+<div class="col-sm-6 col-md-6">
+		<div class="panel panel-default">
+				<div class="panel-heading">
+								<div class="row paddedbottom10">
+										<div class="col-sm-12 col-md-12">
+												<h3 class="panel-title">{{'label.heading.amontcollectedfortoday' | translate}}</h3>
+										</div>
+								</div>
+								<div class="row">
+										<div class="col-sm-12 col-md-12">
+												<select class="form-control input-small-tooltip pull-right" name="office1" ng-change="getCollectionOffice()"
+														id="office1" ng-model="officeIdCollection"
+														data-ng-options="office.id as office.name for office in offices" value="{{office.id}}">
+														<option disabled value="">--{{'label.menu.office' | translate}}--</option>
+												</select>
+										</div>
+								</div>
+						</div>
+		<div class="panel-body" style="min-height:310px;">
+					<h3 class="required panel-error" data-ng-show="showCollectionerror">{{'label.nodata' | translate}}</h3>
+					<div style="height:300px;">
+			<!-- <div data-ng-show="!showCollectionerror" style="margin:-30px 40px 0;height: 310px;"> -->
+							<!-- <nvd3-multi-bar-chart
+											data="collectedData"
+											id="piechart1"
+											width="800"
+	 									 height="380"
+	 									 showXAxis="true"
+	 												 showYAxis="true"
+	 									 interactive="true"
+	 									 tooltips="true"
+	 									 color="colorFunction()"
+	 									 showLegend="true">
+									<svg></svg>
+							</nvd3-multi-bar-chart> -->
+							<nvd3-multi-bar-chart
+											 data="BarDataCollections"
+											 id="barchart1"
+											 width="800"
+											 height="380"
+											 showXAxis="true"
+											 showYAxis="true"
+											 interactive="true"
+											 tooltips="true"
+											 color="colorFunction()"
+											 showLegend="true">
+									 <svg></svg>
+							 </nvd3-multi-bar-chart>
+					</div>
+		</div>
+		</div>
+		</div>
+		</div>
+			<div class="row">
+		<div class="col-sm-6 col-md-6">
+				<div class="panel panel-default">
+						<div class="panel-heading">
+										<div class="row paddedbottom10">
+												<div class="col-sm-12 col-md-12">
+														<h3 class="panel-title">Arrears Chart</h3>
+												</div>
+										</div>
+								</div>
+				<div class="panel-body" style="min-height:310px;">
+							<h3 class="required panel-error" data-ng-show="showCollectionerror">{{'label.nodata' | translate}}</h3>
+					<div data-ng-show="!showCollectionerror" style="margin:0px 0px 0;height: 400px;">
+						<nvd3-pie-chart
+										data="collectedData"
+										id="piechart1"
+										width="680"
+										height="720"
+										x="xFunction()"
+										y="yFunction()"
+										showLabels="true"
+										tooltips="true"
+										donut="true"
+										donutRatio=".35"
+										color="colorFunctionPie()"
+										>
+								<svg height="600"></svg>
+						</nvd3-pie-chart>
+							</div>
+				</div>
+				</div>
+				</div>
+    <div class ="col-md-3"></div>
+		<div class="col-md-3">
+			<!-- PRODUCT LIST -->
+<div class="box box-primary">
+<div class="box-header with-border">
+<span class="info-box-number">Recent Activity</span>
+</div>
+<hr>
+<!-- /.box-header -->
+<div class="box-body" ng-show="show_activity">
+<ul class="products-list product-list-in-box" ng-repeat="data in audit">
+<li class="item">
+<div class="product-info">
+<span class="product-description">
+		{{data.maker}} - {{data.actionName}} - {{data.entityName}} - {{data.madeOnDate | date:'d MMM y h:mm:ss'}}
+	</span>
+</div>
+</li>
+<!-- /.item -->
+</ul>
+
+<!-- /.box-body -->
+<div class="box-footer text-center">
+<a href="#/audit" class="uppercase">View All</a>
+</div>
+</div>
+<!-- /.box-footer -->
+</div>
+<!-- /.box -->
+		</div>
+	</div>
+
+
+						</div>
+				</div>
+	      <!-- /.row -->
+		</div>
+	</div>
+	</div>

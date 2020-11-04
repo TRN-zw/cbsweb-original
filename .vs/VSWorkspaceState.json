@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\scripts",
+    "\\app\\scripts\\controllers",
+    "\\app\\scripts\\controllers\\template",
+    "\\app\\views",
+    "\\app\\views\\templates"
+  ],
+  "SelectedNode": "\\app\\scripts\\controllers\\template\\CreateTemplateController.js",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,65 @@
+/* @import this file */
+
+.navbar{
+  border-bottom:1px solid #dfdfdf;
+
+  #leftnav-toggle{
+    float:left;
+    display:inline-block;
+    height:50px;
+    border-right:1px solid #e0e0e0;
+    padding: 11px 16px 0 0;
+    font-size:20px;
+    margin-right:10px;
+  }
+
+  .navbar-brand {
+    padding:10px 15px;
+    img{
+      max-width:80px;
+
+    }
+  }
+    background-color: #AB0000;
+    color: #ffffff;
+}
+  .navbar {
+  background-color: #AB0000;
+}
+  .navbar .nav > li > a {
+  color: #ffffff;
+}
+  .navbar .nav > li > a:hover,
+  .navbar .nav > li > a:active,
+  .navbar .nav > li > a:focus,
+  .navbar .nav .open > a,
+  .navbar .nav .open > a:hover,
+  .navbar .nav .open > a:focus,
+  .navbar .nav > .active > a {
+  background: rgba(0, 0, 0, 0.1);
+  color: #f6f6f6;
+}
+  .navbar .sidebar-toggle {
+  color: #ffffff;
+}
+  .navbar .sidebar-toggle:hover {
+  color: #f6f6f6;
+  background: rgba(0, 0, 0, 0.1);
+}
+  .navbar .sidebar-toggle {
+  color: #fff;
+}
+  .navbar .sidebar-toggle:hover {
+  background-color: #367fa9;
+}
+@media (max-width: 767px) {
+    .navbar .dropdown-menu li.divider {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+    .navbar .dropdown-menu li a {
+    color: #fff;
+  }
+    .navbar .dropdown-menu li a:hover {
+    background: #367fa9;
+  }
+}

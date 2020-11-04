@@ -1,0 +1,85 @@
+<div class="panel" ng-controller="TransactionsController">
+
+    <div class="card">
+        <div class="toolbar">
+            <h4>Loan Transactions</h4>
+        </div>
+        <div class="content">
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <form ng-submit="search()" class="form-horizontal">
+                        <div class="form-group">
+
+                            <div class="col-md-8">
+                                          <label for="showAll" class="checkbox-inline">
+                                              <b>Filter By: </b>
+                                          </label>
+                                          <label for="showDis" class="checkbox-inline">
+                                              <input type="checkbox" id="showDis" name="showDis" ng-model="showDis_">
+                                              Disbursement
+                                          </label>
+                                          <label for="showRep" class="checkbox-inline">
+                                              <input type="checkbox" id="showRep" name="showRep" ng-model="showRep_">
+                                              Repayment
+                                          </label>
+                                          <label for="showAccrual" class="checkbox-inline">
+                                              <input type="checkbox" id="showAccrual" name="showAccrual" ng-model="showAccrual_">
+                                              Accrual
+                                          </label>
+                        </div>
+                        <div class="col-md-4">
+                          <!-- <div class="input-group pull-right" >
+                            <input ng-autofocus="true" ng-model="filterText" ng-keyup="onFilter()" type="text"
+                                   class="form-control unstyled"
+                                   placeholder="Search Transactions">
+                                   <span class="input-group-btn">
+                                       <button class="btn btn-primary form-control">
+                                           <span class="fa fa-search"></span>
+                                       </button>
+                                   </span>
+                              </div> -->
+                        </div>
+                    </form>
+                </div>
+
+                </div>
+            <hr/>
+          </div>
+              <table class="table table-striped table-bordered" datatable="ng" dt-options="vm.dtOptions" dt-instance="vm.dtInstance"  width="100%" >
+                <thead>
+                <tr class="graybg">
+                    <th> {{'label.heading.date' | translate}}</th>
+                    <th> Id </th>
+                    <th> Type</th>
+                    <th> Account </th>
+                    <th> Branch </th>
+                    <th> Name </th>
+                    <th> Created </th>
+                    <th> Amount </th>
+                    <th> Balance </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr ng-repeat="tran in filterData = (transactions | TransactionStatus:showDis_:showRep_:showAccrual_ )  | orderBy:'id' :reverse | TransactionStatus:showDis_:showRep_:showAccrual_ " class="pointer-main">
+                    <td class="pointer" >{{tran.date | DateFormat }}</td>
+                    <td class="pointer" >{{tran.id | number}}</td>
+                    <td class="pointer" >{{tran.type.value}}</td>
+                    <td class="pointer" >{{tran.accountNum}}</td>
+                    <td class="pointer" >{{tran.officeName}}</td>
+                    <td class="pointer" >{{tran.clientName}}</td>
+                    <td class="pointer" >{{tran.submittedOnDate | DateFormat}}</td>
+                    <td class="pointer" >{{tran.amount | currency}}</td>
+                    <td class="pointer" >{{tran.outstandingLoanBalance | currency}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <!-- <dir-pagination-controls    max-size="10"     direction-links="true"     boundary-links="true" >
+            </dir-pagination-controls> -->
+
+        </div>
+    </div>
+
+
+</div>
